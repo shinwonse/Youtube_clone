@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Typography, Button, Form, message, Input, Icon } from 'antd';
 import Dropzone from 'react-dropzone';
+import Axios from 'axios';
 
 const { TextArea } = Input;
 const { Title } = Typography;
@@ -47,6 +48,8 @@ function VideoUploadPage() {
             header: {'content-type': 'multipart/form-data'}
         }
         formData.append("file", files[0])
+
+        console.log(files)
 
         Axios.post('/api/video/uploadfiles', formData, config)
             .then(response => {
